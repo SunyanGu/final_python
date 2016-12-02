@@ -1,0 +1,3 @@
+construction：用于创建职位技能要求的结构
+create_require：用于构建技能要求
+w2c_nbow：使用word2vec计算技能项的距离并且进行技能项的聚类
