@@ -297,8 +297,8 @@ class Document_distance(object):
         tfidf = models.TfidfModel(corpus)  # 统计tfidf
         print "lda"
         corpus_tfidf = tfidf[corpus]  # 得到每个文本的tfidf向量，稀疏矩阵
-        lda = models.LdaModel(corpus_tfidf, id2word=dic, num_topics=5)
-        for i in range(5):
+        lda = models.LdaModel(corpus_tfidf, id2word=dic, num_topics=25)
+        for i in range(25):
             print lda.print_topic(i)
         pass
         # corpus_lda = lda[corpus_tfidf]  # 每个文本对应的LDA向量，稀疏的，元素值是隶属与对应序数类的权重
