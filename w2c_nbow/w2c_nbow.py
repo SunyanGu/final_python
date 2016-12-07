@@ -175,7 +175,7 @@ class Document_distance(object):
 
     def k_medoids(self):
         distance = np.load("distance_matrix.npy")
-        clusterid, error, nfound = kmedoids(distance,nclusters=10)
+        clusterid, error, nfound = kmedoids(distance,nclusters=100)
         cluster_dict = collections.defaultdict(lambda: [])
         num = 0
         for i in clusterid:
@@ -223,8 +223,9 @@ class Document_distance(object):
         most_important_dict = collections.defaultdict(lambda :[])
         least_important_dict = collections.defaultdict(lambda :[])
         for i,j in cluster_dict.items():
-            nearest = distance[i].argsort()[:5][0::]
-            farthest = distance[i].argsort()[-5:][::-1]
+            length = len(j)
+            nearest = distance[i].argsort()[:length][0::]
+            farthest = distance[i].argsort()[0:][::-1]
             for m in nearest:
                 print distance[i][m]
                 most_important_dict[i].append(index_sentence[m])
@@ -334,8 +335,8 @@ document_distance = Document_distance()
 
 
 # document_distance.get_most_important()
-# document_distance.print_important_sentence()
+document_distance.print_important_sentence()
 
-document_distance.lda()
+# document_distance.lda()
 
 # document_distance.get_main_content()
